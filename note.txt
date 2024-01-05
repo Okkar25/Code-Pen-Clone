@@ -1,0 +1,96 @@
+https://www.npmjs.com/package/codemirror
+
+npm i codemirror
+
+https://www.npmjs.com/package/react-codemirror2
+
+npm i react-codemirror2
+
+------------------------------------------------------------
+
+<iframe title="output" sandbox="allow-scripts" />
+
+sandbox="allow-scripts" => 
+to restrict the actions that can be performed by the embedded content, enhancing security by preventing potential security vulnerabilities.
+explicitly allowing the execution of scripts within the iframe.
+other potentially unsafe actions are still restricted.
+other actions like form submission, pop-ups, and plugins are still restricted unless explicitly allowed using additional values in the sandbox attribute.
+
+
+The sandbox attribute helps you control what the content inside the <iframe> is allowed to do. It's like putting that content in a protective "sandbox."
+
+giving permission for the content inside the iframe to run JavaScript code
+
+saying, "Okay, you can use scripts, but be careful with everything else."
+
+useful because it adds a layer of security
+
+Even if the content you're embedding has some potentially harmful scripts, the sandbox attribute limits what those scripts can do, reducing the risk of security issues on your main website.
+
+In summary, sandbox="allow-scripts" is like telling the content inside the iframe, "You can run scripts, but don't go too wild. Stay within this safe environment we've set up for you."
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+import "codemirror/lib/codemirror.css"
+import "codemirror/theme/material.css"
+
+css styles for code editor and material theme 
+
+import "codemirror/mode/css/css";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/xml/xml";
+
+xml => html 
+
+note that the base codemirror.css file is required in all use cases
+
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/material.css';
+
+
+render html css js in iframe => 
+
+delay 250 => set the source doc after either done typing or taking a slight pause 
+
+  useEffect(() => {
+    // effect body
+    const timeout = setTimeout(() => {
+      setSrcDoc(`
+      <html>
+         <body>${html}</body>
+         <style>${css}</style>
+         <script>${js}</script>
+      </html>
+    `);
+    }, 250);
+
+    // clean up function
+    return () => clearTimeout(timeout);
+  }, [html, css, js]);
+
+
+
+https://fontawesome.com/v5/docs/web/use-with/react
+
+ npm i @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core
+
+
+
+    const jsonValue = localStorage.getItem(prefixedKey);
+
+    // if value in local storage exists and is not undefined
+    if (jsonValue != null ) return JSON.parse(jsonValue);
+
+    // if there is no value in local storage or undefined
+    if (typeof initialValue === "function") {
+      return initialValue();
+    } else {
+      return initialValue;
+    }
+
+JSON.parse() => undefined => error 
+use try catch 
