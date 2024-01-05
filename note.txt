@@ -94,3 +94,6 @@ https://fontawesome.com/v5/docs/web/use-with/react
 
 JSON.parse() => undefined => error 
 use try catch 
+
+
+"react-dom": "^18.2.0"
